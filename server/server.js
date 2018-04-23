@@ -7,6 +7,7 @@ var { Todo } = require('./models/todo');
 var { User } = require('./models/user');
 
 var app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodypaser.json());
 
@@ -47,17 +48,10 @@ app.get('/todos/:id', (req, res) => {
         .catch((e) => {
             res.status(404).send();
         })
-    
-    // findById
-        // Success
-            // send back to-do
-            // if not found send 404
-        // Error
-            // send 404 status
 });
 
-app.listen(3000, () => {
-    console.log('Started Server on port:3000');
+app.listen(port, () => {
+    console.log('Started Server on port:' + port);
 })
 
 module.exports = { app };
